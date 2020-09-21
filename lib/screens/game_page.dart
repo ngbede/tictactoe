@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/components/boxes.dart';
+import 'package:tictactoe/components/actionbutton.dart';
 
 class GameBoard extends StatefulWidget {
   @override
@@ -72,51 +73,21 @@ class _GameBoardState extends State<GameBoard> {
               padding: const EdgeInsets.only(left: 30, right: 30, top: 40),
               child: Row(
                 children: [
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0XFFCCE6F1),
-                      ),
-                      child: FlatButton(
-                        onPressed: () {
-                          print('New Game');
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'New Game',
-                            style: TextStyle(fontSize: 18),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
+                  ActionButton(
+                    name: 'New Game',
+                    funct: () {
+                      print('New Game');
+                    },
                   ),
                   SizedBox(
                     width: 20,
                   ),
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color(0XFFCCE6F1),
-                      ),
-                      child: FlatButton(
-                        onPressed: () {
-                          print('Quit');
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'Quit',
-                            style: TextStyle(fontSize: 20),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  ActionButton(
+                    name: 'Quit',
+                    funct: () {
+                      print('Quit');
+                    },
+                  )
                 ],
               ),
             ),
