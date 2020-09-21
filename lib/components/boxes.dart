@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'logic.dart';
+import 'package:tictactoe/logic/logic.dart';
 
 Game ticTac = Game();
 String letter = '';
@@ -35,7 +35,7 @@ class _SquareState extends State<Square> {
           padding: const EdgeInsets.all(1.0),
           child: Container(
             //decoration: BoxDecoration(),
-            color: Color(0xFF4a4c51),
+            color: Color(0XFFA7C8D6), //a7c8d6
             height: 100,
             child: Center(
               child: Text(
