@@ -7,6 +7,7 @@ class TicTacToe {
   void clearBoard() {
     board = ["", "", "", "", "", "", "", "", ""];
     movesPlayed = 0;
+    gameEnded = false;
   }
 
   bool checkBoard(int position) {
@@ -24,7 +25,11 @@ class TicTacToe {
   }
 
   String currentLetter() {
-    return letters[movesPlayed - 1];
+    String letter;
+    if (movesPlayed < 9) {
+      letter = letters[movesPlayed];
+    }
+    return letter;
   }
 
   void analyseBoard() {
