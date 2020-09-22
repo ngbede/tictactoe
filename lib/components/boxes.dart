@@ -1,35 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoe/logic/logic.dart';
+import 'package:tictactoe/logic/brain.dart';
 
-Game ticTac = Game();
-String letter = '';
+TicTacToe game = TicTacToe();
 
 class Square extends StatefulWidget {
   final int boxNum;
-
-  const Square({Key key, this.boxNum}) : super(key: key);
+  Square({this.boxNum});
   @override
   _SquareState createState() => _SquareState();
 }
 
 class _SquareState extends State<Square> {
+  String letter = "";
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          print('Tap out');
-          setState(() {
-            if (ticTac.empytSpace(widget.boxNum)) {
-              letter = ticTac.playerMove(widget.boxNum);
-              ticTac.boardView();
-              if (ticTac.played() >= 5) {
-                // minimum number of moves to win = 5
-                print(ticTac.analyseBoard());
-                print(ticTac.played());
-              }
-            }
-          });
+          bool done = game.checkBoard(widget.boxNum);
+          game.analyseBoard();
+          if (done) {
+            setState(
+              () {
+                letter = game.board[widget.boxNum];
+                print(game.board);
+                print(game.currentLetter());
+              },
+            );
+          }
         },
         child: Padding(
           padding: const EdgeInsets.all(1.0),
@@ -39,7 +37,7 @@ class _SquareState extends State<Square> {
             height: 100,
             child: Center(
               child: Text(
-                '$letter',
+                letter,
                 style: TextStyle(
                     fontFamily: 'MetalMania',
                     fontSize: 50,
