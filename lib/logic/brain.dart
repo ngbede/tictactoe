@@ -23,8 +23,18 @@ class TicTacToe {
     return movesPlayed;
   }
 
-  String currentLetter() {
-    return letters[movesPlayed - 1];
+  String message() {
+    String letter;
+    if (movesPlayed > 8 && win != true) {
+      letter = '${letters[8]} turn to play';
+    } else if (win == true) {
+      letter = '${letters[movesPlayed - 1]} has won the game';
+    } else {
+      if (win != true) {
+        letter = '${letters[movesPlayed]} turn to play';
+      }
+    }
+    return letter;
   }
 
   void analyseBoard() {

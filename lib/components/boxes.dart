@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tictactoe/logic/brain.dart';
-
-TicTacToe game = TicTacToe();
+import 'package:tictactoe/constant.dart';
 
 class Square extends StatefulWidget {
   final int boxNum;
@@ -18,13 +16,15 @@ class _SquareState extends State<Square> {
       child: GestureDetector(
         onTap: () {
           bool done = game.checkBoard(widget.boxNum);
-          game.analyseBoard();
           if (done) {
             setState(
               () {
-                letter = game.board[widget.boxNum];
+                game.analyseBoard();
+                letter = game.letters[game.getMovesPlayed() - 1];
+                turn = game.message();
                 print(game.board);
-                print(game.currentLetter());
+                print(turn);
+                print(game.win);
               },
             );
           }
