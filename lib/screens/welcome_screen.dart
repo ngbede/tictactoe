@@ -27,9 +27,6 @@ class WelcomePage extends StatelessWidget {
               SystemNavigator.pop(); // quit the app
             },
           ),
-          Cards(
-            text: 'About Me',
-          ),
         ],
       ),
     );
