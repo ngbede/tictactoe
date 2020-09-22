@@ -3,7 +3,7 @@ class TicTacToe {
   List<String> board = ["", "", "", "", "", "", "", "", ""];
   bool gameEnded = false;
   List<String> letters = ["X", "O", "X", "O", "X", "O", "X", "O", "X"];
-
+  bool win = false;
   void clearBoard() {
     board = ["", "", "", "", "", "", "", "", ""];
     movesPlayed = 0;
@@ -12,7 +12,7 @@ class TicTacToe {
 
   bool checkBoard(int position) {
     bool updated = false;
-    if (board[position].isEmpty && gameEnded != true) {
+    if ((board[position].isEmpty) && (win != true)) {
       updated = true;
       movesPlayed += 1;
       board[position] = letters[movesPlayed - 1];
@@ -25,41 +25,70 @@ class TicTacToe {
   }
 
   String currentLetter() {
-    String letter;
-    if (movesPlayed < 9) {
-      letter = letters[movesPlayed];
-    }
-    return letter;
+    return letters[movesPlayed - 1];
   }
 
   void analyseBoard() {
-    bool win = false;
-    if ((movesPlayed > 4) && (gameEnded == false)) {
-      if ((board[0] == board[1]) && (board[1] == board[2])) {
-        win = true;
-        gameEnded = true;
-      } else if ((board[0] == board[3]) && (board[3] == board[6])) {
-        win = true;
-        gameEnded = true;
-      } else if ((board[0] == board[4]) && (board[4] == board[8])) {
-        win = true;
-        gameEnded = true;
-      } else if ((board[3] == board[4]) && (board[4] == board[5])) {
-        win = true;
-        gameEnded = true;
-      } else if ((board[6] == board[7]) && (board[7] == board[8])) {
-        win = true;
-        gameEnded = true;
-      } else if ((board[2] == board[5]) && (board[5] == board[8])) {
-        win = true;
-        gameEnded = true;
-      } else if ((board[1] == board[4]) && (board[4] == board[7])) {
-        win = true;
-        gameEnded = true;
-      } else if ((board[2] == board[4]) && (board[4] == board[6])) {
-        win = true;
-        gameEnded = true;
+    if ((movesPlayed > 4) && (win == false)) {
+      if (board[0].isNotEmpty) {
+        if ((board[0] == board[1]) && (board[1] == board[2])) {
+          win = true;
+          //gameEnded = true;
+        } else if ((board[0] == board[3]) && (board[3] == board[6])) {
+          win = true;
+          //gameEnded = true;
+        } else if ((board[0] == board[4]) && (board[4] == board[8])) {
+          win = true;
+          //gameEnded = true;
+        }
+      }
+      if (board[8].isNotEmpty) {
+        if ((board[6] == board[7]) && (board[7] == board[8])) {
+          win = true;
+          //gameEnded = true;
+        } else if ((board[2] == board[5]) && (board[5] == board[8])) {
+          win = true;
+          //gameEnded = true;
+        }
+      }
+      if (board[4].isNotEmpty) {
+        if ((board[1] == board[4]) && (board[4] == board[7])) {
+          win = true;
+          //gameEnded = true;
+        } else if ((board[3] == board[4]) && (board[4] == board[5])) {
+          win = true;
+          //gameEnded = true;
+        } else if ((board[2] == board[4]) && (board[4] == board[6])) {
+          win = true;
+          //gameEnded = true;
+        }
       }
     }
   }
 }
+
+// if ((board[0] == board[1]) && (board[1] == board[2])) {
+//   win = true;
+//   //gameEnded = true;
+// } else if ((board[0] == board[3]) && (board[3] == board[6])) {
+//   win = true;
+//   //gameEnded = true;
+// } else if ((board[0] == board[4]) && (board[4] == board[8])) {
+//   win = true;
+//   //gameEnded = true;
+// } else if ((board[3] == board[4]) && (board[4] == board[5])) {
+//   win = true;
+//   //gameEnded = true;
+// } else if ((board[6] == board[7]) && (board[7] == board[8])) {
+//   win = true;
+//   //gameEnded = true;
+// } else if ((board[2] == board[5]) && (board[5] == board[8])) {
+//   win = true;
+//   //gameEnded = true;
+// } else if ((board[1] == board[4]) && (board[4] == board[7])) {
+//   win = true;
+//   //gameEnded = true;
+// } else if ((board[2] == board[4]) && (board[4] == board[6])) {
+//   win = true;
+//   //gameEnded = true;
+// }
