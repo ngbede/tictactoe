@@ -17,29 +17,13 @@ class _BoardState extends State<Board> {
           child: Row(
             children: <Widget>[
               Square(
-                boxNum: 0,
+                boxnum: 0,
               ),
               Square(
-                boxNum: 1,
+                boxnum: 1,
               ),
               Square(
-                boxNum: 2,
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: Row(
-            children: <Widget>[
-              Square(
-                boxNum: 3,
-              ),
-              Square(
-                boxNum: 4,
-              ),
-              Square(
-                boxNum: 5,
+                boxnum: 2,
               ),
             ],
           ),
@@ -49,13 +33,29 @@ class _BoardState extends State<Board> {
           child: Row(
             children: <Widget>[
               Square(
-                boxNum: 6,
+                boxnum: 3,
               ),
               Square(
-                boxNum: 7,
+                boxnum: 4,
               ),
               Square(
-                boxNum: 8,
+                boxnum: 5,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Row(
+            children: <Widget>[
+              Square(
+                boxnum: 6,
+              ),
+              Square(
+                boxnum: 7,
+              ),
+              Square(
+                boxnum: 8,
               ),
             ],
           ),

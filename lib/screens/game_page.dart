@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/components/actionbutton.dart';
-import 'package:tictactoe/constant.dart';
+import 'package:tictactoe/components/board.dart';
+import 'package:provider/provider.dart';
+import 'package:tictactoe/logic/brain.dart';
+import 'package:flutter/services.dart';
 
 class GameBoard extends StatefulWidget {
   @override
@@ -17,10 +20,10 @@ class _GameBoardState extends State<GameBoard> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              turn,
+              Provider.of<TicTacToe>(context).message(),
               style: TextStyle(fontSize: 25),
             ),
-            board,
+            Board(),
             Padding(
               padding: const EdgeInsets.only(left: 30, right: 30, top: 40),
               child: Row(
@@ -28,7 +31,8 @@ class _GameBoardState extends State<GameBoard> {
                   ActionButton(
                     name: 'New Game',
                     funct: () {
-                      print('New Game');
+                      Provider.of<TicTacToe>(context, listen: false)
+                          .clearBoard();
                     },
                   ),
                   SizedBox(
@@ -37,7 +41,7 @@ class _GameBoardState extends State<GameBoard> {
                   ActionButton(
                     name: 'Quit',
                     funct: () {
-                      print('Quit');
+                      SystemNavigator.pop(); // quit the app
                     },
                   )
                 ],

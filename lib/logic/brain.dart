@@ -1,4 +1,6 @@
-class TicTacToe {
+import 'package:flutter/foundation.dart';
+
+class TicTacToe with ChangeNotifier {
   int movesPlayed = 0;
   List<String> board = ["", "", "", "", "", "", "", "", ""];
   List<String> letters = ["X", "O", "X", "O", "X", "O", "X", "O", "X"];
@@ -7,26 +9,25 @@ class TicTacToe {
     board = ["", "", "", "", "", "", "", "", ""];
     movesPlayed = 0;
     win = false;
+    notifyListeners();
   }
 
-  bool checkBoard(int position) {
-    bool updated = false;
+  void checkBoard(int position) {
     if ((board[position].isEmpty) && (win != true)) {
-      updated = true;
       movesPlayed += 1;
       board[position] = letters[movesPlayed - 1];
+      notifyListeners();
     }
-    return updated; // return true if the board state was updated
   }
 
-  int getMovesPlayed() {
-    return movesPlayed;
+  String letterAtPosition(int pos) {
+    return board[pos];
   }
 
   String message() {
     String letter;
     if (movesPlayed > 8 && win != true) {
-      letter = '${letters[8]} turn to play';
+      letter = 'Game ended in a draw!';
     } else if (win == true) {
       letter = '${letters[movesPlayed - 1]} has won the game';
     } else {
